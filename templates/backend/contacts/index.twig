@@ -1,0 +1,173 @@
+{% extends 'layouts/default.twig' %}
+
+{% block body %}
+    <style>
+        .button {
+            display: block;
+            background-color: #c0392b;
+            width: 100px;
+            height: 33px;
+            line-height: 33px;
+            margin-top: 10px;
+            margin-left: 50px;
+            color: #fff;
+            font-weight: normal !important;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4);
+        }
+        .button span,
+        .button .icon {
+            display: block;
+            height: 100%;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            color: #fff;
+        }
+        .button span {
+            width: 80%;
+            line-height: inherit;
+            font-size: 12px;
+            left: 0;
+            color: #fff;
+            transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4);
+        }
+        .button span:after {
+            content: '';
+            background-color: #a53125;
+            width: 2px;
+            height: 70%;
+            position: absolute;
+            color: #fff;
+            top: 15%;
+            right: 0;
+        }
+        .button .icon {
+            width: 20%;
+            right: 0;
+            transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4);
+        }
+        .button .icon .fa {
+            font-size: 10px;
+            transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4), height 0.25s ease;
+        }
+        .button .icon .fa-trash {
+            height: 12px;
+        }
+        .button .icon .fa-check {
+            display: none;
+        }
+        .button.success span, .button:hover span {
+            left: -72%;
+            opacity: 0;
+        }
+        .button.success .icon, .button:hover .icon {
+            width: 100%;
+        }
+        .button.success .icon .fa, .button:hover .icon .fa {
+            font-size: 15px;
+        }
+        .button.success {
+            background-color: #27ae60;
+        }
+        .button.success .icon .fa-trash {
+            display: none;
+        }
+        .button.success .icon .fa-check {
+            display: inline-block;
+        }
+        .button:hover {
+            opacity: .9;
+        }
+        .button:hover .icon .fa-trash {
+            height: 16px;
+        }
+        .button:active {
+            opacity: 1;
+        }
+
+    </style>
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6">
+                            <h4 class="page-title">Contacts</h4>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Contacts</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Messages</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class=" mb-3">
+                            <div class="card">
+                                <div class="btn-toolbar p-3" role="toolbar">
+                                    <div class="btn-group mo-mb-2">
+                                        <h1 style="font-size: 20px;">Messages</h1>
+                                    </div>
+                                </div>
+                                <ul class="message-list" style="background: #ddd">
+                                    {% for message in messages  |reverse %}
+                                        <li {{ message.readed == 0 ? "style=\"font-weight: bold;background: #fff;box-shadow: 0 2px 6px #ccc\"" : ''}}>
+                                            <div class="col-mail col-mail-1">
+                                                <div class="checkbox-wrapper-mail">
+                                                    <input type="checkbox" id="chk19{{ message.id }}">
+                                                    <label for="chk19" class="toggle"></label>
+                                                </div>
+
+                                                {{ message.readed == 0 ?  '<b class="badge" style="background:#c0392b;color:#fff">Nouveau</b>' : ''}}
+                                                <a href="/admin/messages/{{ message.id }}" class="title" style="margin-left: 20px;">{{ message.fullname }}</a>
+                                            </div>
+                                            <div class="col-mail col-mail-2">
+                                                <a href="/admin/messages/{{ message.id }}" class="subject">{{ message.sujet }} – <span class="teaser">{{ message.message }}</span>
+                                                </a>
+                                                <div class="date">
+                                                    <div class="date"><a href="javascript:void(0);" data-url="/admin/messages/{{ message.id }}/delete" class="far fa-trash-alt text-danger js-delete"></a></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+
+                            </div> <!-- card -->
+
+
+                        </div> <!-- end Col-9 -->
+
+                    </div>
+
+                </div><!-- End row -->
+
+
+            </div>
+            <!-- container-fluid -->
+
+        </div>
+        <!-- content -->
+
+        <footer class="footer">
+            © 2019 SotoTech
+        </footer>
+
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="/assets/js/sweetalert.js"></script>
+    <script src="/assets/js/sweetalert.init.js"></script>
+    <script src="/pages/message.js"></script>
+{% endblock %}

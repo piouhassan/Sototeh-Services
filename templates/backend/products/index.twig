@@ -1,0 +1,178 @@
+{% extends 'layouts/default.twig' %}
+
+{% block body %}
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6">
+                            <h4 class="page-title">Produits</h4>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Catégories</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Sous Catégories</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Produits</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title">Liste des produits</h4>
+                                <p class="text-muted m-b-30" style="float: right;">
+                                    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="ti-plus"></i>Ajouter</button>
+                                </p>
+                                <div class="table-responsive">
+                                    <table id="js-table" class="table mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Titre</th>
+                                            <th>Catégorie</th>
+                                            <th>Sous Catégorie</th>
+                                            {% if auth().role == 'admin' %}
+                                                <th>Actions</th>
+                                            {% endif %}
+                                        </tr>
+                                        </thead>
+                                        <tbody id="body">
+                                        {% for product in products %}
+                                            <tr>
+                                                <td>
+                                                    <img src="{{ product.cover }}" alt="Product cover" height="30">
+                                                </td>
+                                                <td>{{ product.title }}</td>
+                                                <td>{{ product.sub_category.category.title }}</td>
+                                                <td>{{ product.sub_category.title }}</td>
+                                                {% if auth().role == 'admin' %}
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary btn-round ti-pencil js-edit" data-toggle="modal" data-target=".product-{{ product.id }}"></button>
+                                                        <a href="javascript:void(0);" class="btn btn-danger ti-trash js-delete" data-url="/admin/products/{{ product.id }}/delete"></a>
+                                                    </td>
+                                                {% endif %}
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- content -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0" id="myLargeModalLabel">Ajouter un nouveau produit</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="js-form" action="/admin/products/store" method="post">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="title">Titre de la solution</label>
+                                    <input id="title" name="title" type="text" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="s_sub_category_id">Sous-catégorie</label>
+                                    <select name="p_sub_category_id" id="s_sub_category_id" class="form-control">
+                                        {% for subCategory in subCategories %}
+                                            <option value="{{ subCategory.id }}">{{ subCategory.title }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="">Image</label>
+                                    <input type="file" name="cover" class="form-control">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <textarea name="content"></textarea>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button class="btn btn-success btn-lg">
+                                        <img id="spinner" src="/img/spinner.svg" width="30" style="display: none">
+                                        Enrégistrer
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <div id="modals">
+        {% for product in products %}
+            <div class="modal fade product-{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="modal" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title mt-0" id="myLargeModalLabel">{{ product.title }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="js-form" action="/admin/products/{{ product.id }}/update" method="post">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label>Titre de la solution</label>
+                                        <input name="title" type="text" class="form-control" value="{{ product.title }}">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Sous-catégorie</label>
+                                        <select name="p_sub_category_id" class="form-control">
+                                            {% for subCategory in subCategories %}
+                                                <option value="{{ subCategory.id }}" {{ product.sub_category.title == subCategory.title ? 'selected' : '' }}>{{ subCategory.title }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="">Image</label>
+                                        <input type="file" name="cover" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <textarea name="content">{{ product.content }}</textarea>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <button class="btn btn-success btn-lg">
+                                            <img src="/img/spinner.svg" width="30" style="display: none">
+                                            Enrégistrer
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+        {% endfor %}
+        </div>
+        <footer class="footer">
+            © 2019 SotoTech.
+        </footer>
+    </div>
+
+
+{% endblock %}
+{% block scripts %}
+    <script src="/assets/js/sweetalert.js"></script>
+    <script src="/assets/js/sweetalert.init.js"></script>
+    <script src="/pages/products/product.js"></script>
+    <!--Summernote js-->
+    <script src="/assets/plugins/summernote/summernote-bs4.min.js"></script>
+    <script>
+        $('textarea').summernote({
+            height: 300,                 // set editor height
+            minHeight: 100,             // set minimum height of editor
+            maxHeight: 250,             // set maximum height of editor
+            focus: true                 // set focus to editable area after initializing summernote
+        });
+    </script>
+{% endblock %}

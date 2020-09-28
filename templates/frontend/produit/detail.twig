@@ -1,0 +1,28 @@
+{% include "frontend/header.twig" %}
+<section class="page-header padding" style="background-image:url({{ '/frontend/img/slider-2.jpg' }})">
+    <div class="container">
+        <div class="page-content text-center">
+            <h2 data-wow-delay="100ms">Produit</h2>
+            <p data-wow-delay="200ms">{{ solutio.title }}</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="project-single-section padding">
+    <div class="container ">
+        <div class="row project-single-wrap align-items-center">
+            <div class="col-md-4 sm-padding">
+                <img src="{{ single.cover }}" alt="img">
+            </div>
+            <div class="col-md-8 sm-padding">
+                <div class="project-single-content">
+                   {{ htmlformat(single.content) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% include "frontend/footer.twig" %}

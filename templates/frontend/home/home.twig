@@ -1,0 +1,201 @@
+{% include "frontend/header.twig" %}
+<div id="main-slider" class="dl-slider">
+    <div class="single-slide">
+        <div class="bg-img kenburns-top-right" style="background-image: url(/frontend/img/slider-1.jpg);"></div>
+        <div class="overlay"></div>
+        <div class="slider-content-wrap d-flex align-items-center text-left">
+            <div class="container">
+                <div class="slider-content">
+                    <div class="dl-caption medium"><div class="inner-layer"><div data-animation="fade-in-right" data-delay="1s">Residencial</div></div></div>
+                    <div class="dl-caption big"><div class="inner-layer"><div data-animation="fade-in-left" data-delay="2s">We provide outstanding</div></div>
+                    </div>
+                    <div class="dl-caption big"><div class="inner-layer"><div data-animation="fade-in-left" data-delay="2.5s">construction services.</div></div></div>
+                    <div class="dl-caption small"><div class="inner-layer"><div data-animation="fade-in-left" data-delay="3s">We have provided complete remodeling and construction solutions for <br>residential and commercial properties in cities.</div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-slide">
+        <div class="bg-img kenburns-top-right" style="background-image: url(/frontend/img/slider-2.jpg);"></div>
+        <div class="overlay"></div>
+        <div class="slider-content-wrap d-flex align-items-center text-center">
+            <div class="container">
+                <div class="slider-content">
+                    <div class="dl-caption medium"><div class="inner-layer"><div data-animation="fade-in-top" data-delay="1s">Residencial</div></div></div>
+                    <div class="dl-caption big"><div class="inner-layer"><div data-animation="fade-in-bottom" data-delay="2s">We are professional</div></div>
+                    </div>
+                    <div class="dl-caption big"><div class="inner-layer"><div data-animation="fade-in-bottom" data-delay="2.5s">for building construction.</div></div></div>
+                    <div class="dl-caption small"><div class="inner-layer"><div data-animation="fade-in-bottom" data-delay="3s">We have provided complete remodeling and construction solutions for <br>residential and commercial properties in cities.</div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-slide">
+        <div class="bg-img kenburns-top-right" style="background-image: url(/frontend/img/slider-3.jpg);"></div>
+        <div class="overlay"></div>
+        <div class="slider-content-wrap d-flex align-items-center text-right">
+            <div class="container">
+                <div class="slider-content">
+                    <div class="dl-caption medium"><div class="inner-layer"><div data-animation="fade-in-left" data-delay="1s">Residencial</div></div></div>
+                    <div class="dl-caption big"><div class="inner-layer"><div data-animation="fade-in-right" data-delay="2s">We will be happy to take care</div></div>
+                    </div>
+                    <div class="dl-caption big"><div class="inner-layer"><div data-animation="fade-in-right" data-delay="2.5s">of your construction works.</div></div></div>
+                    <div class="dl-caption small"><div class="inner-layer"><div data-animation="fade-in-right" data-delay="3s">We have provided complete remodeling and construction solutions for <br>residential and commercial properties in cities.</div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="service-section section-2 bg-grey padding">
+    <div class="dots"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-6 sm-padding">
+                <div class="service-content wow fadeInLeft">
+                    <span>Services</span>
+                    <h2>Découvrez nos  Services</h2>
+                    <p>We are committed to building a sustainable future by fostering a collaborative spirit that creates exceptional experiences, balanced relationships, and community built environment. Building isn’t just job. It's our passion. With every project we undertake, we set the bar high and provide the best industry.</p>
+                    <p>Building isn’t just job. It's our passion. With every project we undertake, we set the bar high and provide the best industry.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 sm-padding">
+                <div class="row services-list">
+                    {% for service in services.take(4) %}
+                    <div class="col-md-6">
+                        <br>
+                        <div class="service-item box-shadow wow fadeInUp" data-wow-delay="100ms">
+                            <a href="/services/{{ service.hash }}">
+                                <img src="{{ service.cover }}" alt="" style="width: 100%;">
+                                <div style="padding: 10px">
+                                    <h3 style="text-align: center;">{{ service.title }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="counter-section padding">
+    <div class="container">
+        <div class="row counter-wrap">
+            <div class="col-lg-3 col-sm-6 padding-15">
+                <div class="counter-content wow fadeInUp" data-wow-delay="100ms">
+                    <div class="counter"><span class="odometer" data-count="100">00</span></div>
+                    <h4>Partners Worldwide</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 padding-15">
+                <div class="counter-content wow fadeInUp" data-wow-delay="200ms">
+                    <div class="counter"><span class="odometer" data-count="325">00</span></div>
+                    <h4>Employees and Stuffs</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 padding-15">
+                <div class="counter-content wow fadeInUp" data-wow-delay="300ms">
+                    <div class="counter"><span class="odometer" data-count="10">00</span></div>
+                    <h4>Year Of Experience</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 padding-15">
+                <div class="counter-content wow fadeInUp" data-wow-delay="400ms">
+                    <div class="counter"><span class="odometer" data-count="554">00</span></div>
+                    <h4>Projects Completed</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="projects-section padding">
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-8 col-md-6 sm-padding">
+                <div class="section-heading mb-40">
+                    <span>Solutions</span>
+                    <h2>Découvrez nos solutions</h2>
+                </div>
+            </div>
+        </div>
+        <div id="projects-carousel" class="projects-carousel box-shadow owl-carousel">
+            {% for solution in solutions %}
+            <div class="project-item">
+                <a href="/solution/{{ solution.hash }}">
+                    <img src="{{ solution.cover }}" style="height: 400px;"  alt="projects">
+                    <div class="overlay"></div>
+                    <a href="{{ solution.cover }}" class="view-icon img-popup" data-gall="project"> <i class="fas fa-expand"></i></a>
+                    <div class="projects-content">
+                        <h3><a href="#" class="tittle">{{ solution.title }}</a></h3>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="testimonial-section bg-grey padding">
+    <div class="dots"></div>
+    <div class="container">
+        <div class="section-heading text-center mb-40 wow fadeInUp" data-wow-delay="100ms">
+            <span>Témoignages</span>
+            <h2>Ce que les gens disent de nous</h2>
+        </div>
+        <div id="testimonial-carousel" class="testimonial-carousel box-shadow owl-carousel">
+            <div class="testi-item d-flex align-items-center">
+                <img src="/frontend/img/testi-1.jpg" alt="img">
+                <div class="testi-content">
+                    <p>"Thank you for guiding us through the construction process, understanding, and always ready to accommodate our needs. We love our new space and know that it was built by the very best!"</p>
+                    <h3>Kyle Frederick</h3>
+                    <ul class="rattings">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                    </ul>
+                    <span>Director</span>
+                </div>
+                <i class="fa fa-quote-right"></i>
+            </div>
+            <div class="testi-item d-flex align-items-center">
+                <img src="/frontend/img/testi-2.jpg" alt="img">
+                <div class="testi-content">
+                    <p>"Thank you for guiding us through the construction process, understanding, and always ready to accommodate our needs. We love our new space and know that it was built by the very best!"</p>
+                    <h3>Valentin Lacoste</h3>
+                    <ul class="rattings">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                    </ul>
+                    <span>Director</span>
+                </div>
+                <i class="fa fa-quote-right"></i>
+            </div>
+            <div class="testi-item d-flex align-items-center">
+                <img src="/frontend/img/testi-3.jpg" alt="img">
+                <div class="testi-content">
+                    <p>"Thank you for guiding us through the construction process, understanding, and always ready to accommodate our needs. We love our new space and know that it was built by the very best!"</p>
+                    <h3>José Carpio</h3>
+                    <ul class="rattings">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                    </ul>
+                    <span>Director</span>
+                </div>
+                <i class="fa fa-quote-right"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include "frontend/footer.twig" %}

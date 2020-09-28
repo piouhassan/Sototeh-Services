@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteRule  ^$ public/    [L]
+	RewriteRule  (.*) public/$1 [L]
+</IfModule>
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+
+RewriteCond %{REQUEST_URI} ^/(api)
+RewriteRule ^api/(.*)$ api/$1 [L]
+RewriteRule ^api/parameters/(.*)$ api/parameters/$1 [L]
+RewriteCond %{REQUEST_URI} ^/(api)
+RewriteRule ^.*$ api/parameters/index.php [L]
+

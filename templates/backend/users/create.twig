@@ -1,0 +1,99 @@
+{% extends 'layouts/default.twig' %}
+
+{% block body %}
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+
+                        <div class="col-sm-6">
+                            <h4 class="page-title">Utilisateurs</h4>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Utilisateurs</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Ajouter des utilisateurs</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title">Ajouter des utilisateurs</h4>
+                                <p class="text-muted m-b-30 text-danger">Tous les champs sont obligatoire</p>
+                                <form id="user-form" action="/admin/users/store" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label for="name">Nom et Prénom(s)</label>
+                                                <input id="name" name="name" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label for="gender">Sexe</label>
+                                                <select class="form-control" name="gender" id="gender">
+                                                    <option  disabled selected>Sélectionner le genre</option>
+                                                    <option value="Masculin">Masculin</option>
+                                                    <option value="Féminin">Féminin</option>
+                                                    <option value="Autres">Autres</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input id="email" name="email" type="email" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="phone">Numéro de Téléphone</label>
+                                                <input id="phone" name="phone" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="role">Role</label>
+                                                <select name="role" id="role" class="form-control">
+                                                    <option  disabled selected>Sélectionner le role</option>
+                                                    <option value="user">Utilisateur</option>
+                                                    <option value="admin">Administrateur</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button class="btn btn-success btn-lg">
+                                            <img id="spinner" src="/img/spinner.svg" width="30" style="display: none">
+                                            Enrégistrer
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- container-fluid -->
+
+        </div>
+        <!-- content -->
+        <footer class="footer">
+            © 2019 SotoTech.
+        </footer>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/assets/js/sweetalert.js"></script>
+    <script src="/pages/user-create.js"></script>
+{% endblock %}

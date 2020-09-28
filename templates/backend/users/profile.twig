@@ -1,0 +1,121 @@
+{% extends 'layouts/default.twig' %}
+
+{% block body %}
+
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+
+                        <div class="col-sm-6">
+                            <h4 class="page-title">Mon Profil</h4>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Utilisateurs</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Mon Profil</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Left sidebar -->
+                        <div class="email-leftbar card">
+                            <div class="card-body text-center">
+                                <img id="js-profile-picture" src="{{ auth().photo }}" alt="Photo de profile" height="150" style="border-radius: 50%; width: 100%">
+                                <h4 style="font-size: 1rem">{{ auth().name }}</h4>
+                                <form id="js-form-picture" action="/admin/profile/avatar/update" method="POST" enctype="multipart/form-data">
+                                    <label for="photo" class="btn btn-primary" style="cursor: pointer">
+                                        Changer ma Photo
+                                        <input id="photo" type="file" name="photo" style="display: none">
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End Left sidebar -->
+
+
+                        <!-- Right Sidebar -->
+                        <div class="email-rightbar mb-3">
+
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <form id="js-form-profile" action="/admin/profile/update" method="POST">
+                                        <h1 style="font-size: 1rem">Informations</h1>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="name">Nom Complet</label>
+                                                <input id="name" type="text" class="form-control" value="{{ auth().name }}" disabled>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="gender">Sexe</label>
+                                                <input id="gender" class="form-control" type="text" value="{{ auth().gender }}" disabled>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="email">Email</label>
+                                                <input id="email" name="email" type="text" class="form-control" value="{{ auth().email }}">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="phone">Numéro de Téléphone</label>
+                                                <input id="phone" name="phone" type="text" class="form-control" value="{{ auth().phone }}">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="password">Mot de Passe</label>
+                                                <input name="password" id="password" type="password" class="form-control">
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-lg">
+                                            <img id="spinner" src="/img/spinner.svg" width="30" style="display: none">
+                                            Mettre à jour
+                                        </button>
+                                    </form>
+                                    <form id="js-form-password" action="/admin/profile/password/update" method="post">
+                                        <h1 style="font-size: 1rem">Changer mon mot de passe</h1>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="old_password">Ancien Mot de passe</label>
+                                                <input id="old_password" name="old_password" type="password" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="new_password">Nouveau Mot de passe</label>
+                                                <input id="new_password" name="new_password" type="password" class="form-control">
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-lg">
+                                            <img id="spinner" src="/img/spinner.svg" width="30" style="display: none">
+                                            Changer le Mot de passe
+                                        </button>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                        </div> <!-- end Col-9 -->
+
+                    </div>
+
+                </div><!-- End row -->
+
+
+            </div>
+            <!-- container-fluid -->
+
+        </div>
+        <!-- content -->
+
+        <footer class="footer">
+            © 2019 SotoTech
+        </footer>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="/assets/js/sweetalert.js"></script>
+    <script src="/pages/profile.js"></script>
+{% endblock %}

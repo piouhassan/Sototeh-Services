@@ -1,0 +1,118 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<!-- index-2.html  29 Nov 2019 03:32:54 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Construction & Building HTML Template">
+    <meta name="author" content="AlexaTheme">
+    <title>{{ 'SototechServices'|title }}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/frontend/img/favicon.png">
+
+    <link rel="stylesheet" href="/frontend/css/fontawesome.min.css">
+
+    <link rel="stylesheet" href="/frontend/css/themify-icons.css">
+
+    <link rel="stylesheet" href="/frontend/css/elegant-line-icons.css">
+
+    <link rel="stylesheet" href="/frontend/css/elegant-font-icons.css">
+
+    <link rel="stylesheet" href="/frontend/css/flaticon.css">
+
+    <link rel="stylesheet" href="/frontend/css/animate.min.css">
+
+    <link rel="stylesheet" href="/frontend/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/frontend/css/slick.css">
+
+    <link rel="stylesheet" href="/frontend/css/slider.css">
+
+    <link rel="stylesheet" href="/frontend/css/odometer.min.css">
+
+    <link rel="stylesheet" href="/frontend/css/venobox/venobox.css">
+
+    <link rel="stylesheet" href="/frontend/css/owl.carousel.css">
+
+    <link rel="stylesheet" href="/frontend/css/main.css">
+
+    <link rel="stylesheet" href="/frontend/style.css">
+
+    <link rel="stylesheet" href="/frontend/css/responsive.css">
+
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<div class="site-preloader-wrap">
+    <div class="spinner"></div>
+</div>
+<header class="header">
+    <div class="primary-header">
+        <div class="container">
+            <div class="primary-header-inner">
+                <div class="header-logo">
+                    <a href="/" style="color: #0a8dd3;font-size: 23px">SOTOTECHSERVICES</a>
+                </div>
+                <div class="header-menu-wrap">
+                    <ul class="dl-menu">
+                        <li><a href="/">Acceuil</a></li>
+                        <li>
+                            <a href="#" class="mega">Solution</a>
+                                <div class="mega-menu">
+                                    {% for solution in solutions %}
+                                    <div class="inner-mega-menu" style="margin-top: 10px;">
+                                        <a href="/solution/{{ solution.hash }}">
+                                        <p style="text-align: center;font-size: 12px">{{ solution.title }}</p>
+                                        <img  src="{{ solution.cover }}"  style="   width: 60px;padding-bottom: 10px;">
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                        </li>
+                        <li><a href="#" class="produit">Produits</a>
+                            <div class="sproduit">
+                                {% for prod in produit %}
+                                    <div class="inner-mega-menu" style="margin-top: 10px;">
+                                        <a href="/produit/{{ prod.hash }}">
+                                            <p style="text-align: center;font-size: 12px">{{ prod.title }}</p>
+                                            <img  src="{{ prod.cover }}"  style="   width: 100px;padding-bottom: 10px;">
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        <li><a href="#" class="service">Services</a>
+                            <div class="sservice">
+                                {% for service in services %}
+                                    <div class="inner-mega-menu" style="margin-top: 10px;">
+                                        <a href="/services/{{ service.hash }}">
+                                            <p style="text-align: center;font-size: 12px">{{ service.title }}</p>
+                                            <img  src="{{ service.cover }}" >
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        <li><a href="/nous-contacter">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="header-right">
+
+                    <div class="mobile-menu-icon">
+                        <div class="burger-menu">
+                            <div class="line-menu line-half first-line"></div>
+                            <div class="line-menu"></div>
+                            <div class="line-menu line-half last-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

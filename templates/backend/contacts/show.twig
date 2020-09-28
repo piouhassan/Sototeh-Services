@@ -1,0 +1,61 @@
+{% extends 'layouts/default.twig' %}
+
+{% block body %}
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6">
+                            <h4 class="page-title">Contacts</h4>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Contacts</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Messages</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">{{ message.fullname }}</a></li>
+                            </ol>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class=" mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href='/admin/messages' class="btn btn-primary">Retour</a>
+                                    <hr>
+                                    <div class="media m-b-30">
+                                        <div class="media-body">
+                                            <h4 class="font-14 m-0">{{ message.fullname }}</h4>
+                                            <small class="text-muted">{{ message.email }}</small>
+                                        </div>
+                                    </div>
+
+                                    <h4 class="mt-0 font-16">{{ message.sujet }}</h4>
+
+                                    <p>{{ message.message }}</p>
+                                </div>
+        
+                                    </div>
+                        </div> <!-- end Col-9 -->
+
+                    </div>
+
+                </div><!-- End row -->
+
+
+            </div>
+            <!-- container-fluid -->
+
+        </div>
+        <!-- content -->
+
+        <footer class="footer">
+            © 2019 SotoTech
+        </footer>
+
+    </div>
+{% endblock %}

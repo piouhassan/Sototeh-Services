@@ -1,0 +1,84 @@
+{% extends 'layouts/default.twig' %}
+
+{% block body %}
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6">
+                            <h4 class="page-title">Inbox</h4>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Veltrix</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Email</a></li>
+                                <li class="breadcrumb-item active">Inbox</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class=" mb-3">
+                            <div class="card">
+                                <div class="btn-toolbar p-3" role="toolbar">
+                                    <div class="btn-group mo-mb-2">
+                                        <button type="button" class="btn btn-danger waves-light waves-effect"><i class="far fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                                <ul class="message-list">
+                                    <li>
+                                        <div class="col-mail col-mail-1">
+                                            <div class="checkbox-wrapper-mail">
+                                                <input type="checkbox" id="chk19">
+                                                <label for="chk19" class="toggle"></label>
+                                            </div>
+                                            <a href="#" class="title">Peter, me (3)</a><span class="star-toggle far fa-star"></span>
+                                        </div>
+                                        <div class="col-mail col-mail-2">
+                                            <a href="#" class="subject">Hello – <span class="teaser">Trip home from Colombo has been arranged, then Jenna will come get me from Stockholm. :)</span>
+                                            </a>
+                                            <div class="date">Mar 6</div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div> <!-- card -->
+
+                            <div class="row m-t-20">
+                                <div class="col-7">
+                                    Showing 1 - 20 of 1,524
+                                </div>
+                                <div class="col-5">
+                                    <div class="btn-group float-right">
+                                        <button type="button" class="btn btn-sm btn-success waves-effect"><i class="fa fa-chevron-left"></i></button>
+                                        <button type="button" class="btn btn-sm btn-success waves-effect"><i class="fa fa-chevron-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- end Col-9 -->
+
+                    </div>
+
+                </div><!-- End row -->
+
+
+            </div>
+            <!-- container-fluid -->
+
+        </div>
+        <!-- content -->
+
+        <footer class="footer">
+            © 2019 Veltrix <span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</span>.
+        </footer>
+
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="/assets/js/chartjs.js"></script>
+    <script src="/pages/dashboard.js"></script>
+{% endblock %}

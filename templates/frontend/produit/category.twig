@@ -1,0 +1,33 @@
+{% include "frontend/header.twig" %}
+<section class="page-header padding" style="background-image:url({{ '/frontend/img/slider-2.jpg' }})">
+    <div class="container">
+        <div class="page-content text-center">
+            <h2 data-wow-delay="100ms">Produit</h2>
+            <p data-wow-delay="200ms">{{ prod.title }}</p>
+        </div>
+    </div>
+</section>
+
+<section class="projects-section padding" data-wow-delay="300ms">
+    <div class="container" >
+        <div class="row">
+             {% for sub in subprod %}
+             <div class="col-lg-4">
+                 <div class="card">
+                  <div class="card-body">
+                      <a href="/produit/sous-categorie/{{ sub.sub_hash }}">
+                          <img src="{{ sub.cover }}" alt="" style="position: relative;left: 50%;transform: translateX(-50%);">
+                          <p style="padding: 20px;font-size: 15px;color: #424242;">
+                              {{ sub.description | slice(0, 100)}}...
+                          </p>
+                      </a>
+                  </div>
+                 </div>
+             </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+{% include "frontend/footer.twig" %}

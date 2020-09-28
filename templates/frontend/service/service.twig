@@ -1,0 +1,67 @@
+{% include "frontend/header.twig" %}
+<section class="page-header padding" style="background-image:url({{ '/frontend/img/slider-2.jpg' }})">
+    <div class="container">
+        <div class="page-content text-center">
+            <h2 data-wow-delay="100ms">Services</h2>
+            <p data-wow-delay="200ms">{{ solutio.title }}</p>
+        </div>
+    </div>
+</section>
+
+<section class="projects-section padding" data-wow-delay="300ms">
+    <div class="container" >
+       <div class="row">
+           <div class="col-lg-8 padding-15">
+               <div class="blog-single-wrap">
+                   <div class="row">
+                       {% if single.count() < 1 %}
+                         <div class="panof">
+                            <p>Aucun Service disponible pour le moment pour cette catégorie</p>
+                             <hr>
+                         </div>
+                       {% endif %}
+                       {% for solu in single %}
+                         <div class="col-lg-12 mb-2">
+                             <h2><strong>* {{ solu.title }}</strong></h2>
+                             <ul>
+                                 <li>{{ htmlformat(solu.content) }}</li>
+                             </ul>
+                         </div>
+                       {% endfor %}
+                   </div>
+               </div>
+           </div>
+           <div class="col-lg-4 padding-15">
+               <div class="sidebar-wrap">
+                   <div class="widget-content">
+                       <h4>Services</h4>
+                       <ul class="widget-links">
+                           {% for service in services %}
+                           <li><a href="/services/{{ service.hash }}">{{ service.title }}</a></li>
+                           {% endfor %}
+                       </ul>
+                   </div>
+
+                   <div class="widget-content">
+                       <h4>Solutions</h4>
+                       <ul class="thumb-post">
+                           {% for solu in solutions.take(3) %}
+                           <li><a href="/solution/{{ solu.hash }}" class="bg-grey solu"><img src="{{ solu.cover }}" alt="post" style="width: 25px;padding-top: 5px;"><b style="text-align: center;padding: 15px;">{{ solu.title }}</b></a></li>
+                           {% endfor %}
+                       </ul>
+                   </div>
+                   <div class="widget-content">
+                       <h4>Produits</h4>
+                       <ul class="tags">
+                           {% for prod in produit %}
+                           <li><a href="/produit/{{ prod.hash }}">{{ prod.title }}</a></li>
+                           {% endfor %}
+                       </ul>
+               </div>
+           </div>
+       </div>
+    </div>
+</section>
+
+
+{% include "frontend/footer.twig" %}

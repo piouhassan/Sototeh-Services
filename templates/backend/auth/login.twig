@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>SOTOTECH  ||  Connexion</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="wrapper-page">
+    <div class="card overflow-hidden account-card mx-3">
+        <div class="bg-primary p-4 text-white text-center position-relative">
+            <h4 class="font-20 m-b-5">Bienvenue</h4>
+            <p class="text-white-50 mb-4">Connecter vous pour avoir accees</p>
+            <!--<a class="logo logo-admin"><img src="/assets/images/users.png" height="24" alt="logo"></a>-->
+        </div>
+        <div class="account-card-content">
+            <form id="login-form" class="form-horizontal m-t-30" action="/admin/login" method="post">
+                {% include 'layouts/flash.twig' %}
+                <div class="form-group">
+                    <label for="username">Identifiant</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Entrer votre identifiant">
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Entrer votre mot de passe">
+                </div>
+                <div class="form-group row m-t-20">
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary btn-lg b btn-block w-md waves-effect waves-light" type="submit">
+                            <img id="spinner" src="/img/spinner.svg" width="30" style="display: none">
+                            Se Connecter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+<!-- end wrapper-page -->
+
+
+<!-- jQuery  -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/metisMenu.min.js"></script>
+<script src="/assets/js/jquery.slimscroll.js"></script>
+<script src="/assets/js/waves.min.js"></script>
+
+<!-- App js -->
+<script src="/assets/js/app.js"></script>
+<script src="/pages/zenjs.js"></script>
+<script src="/pages/login.js"></script>
+
+</body>
+
+</html>

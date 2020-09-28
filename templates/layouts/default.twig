@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title>SotoTech - Administration</title>
+        <link rel="stylesheet" href="/assets/plugins/summernote/summernote-bs4.css">
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/../assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
+        <link href="/assets/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <a class="logo">
+                        <span><h1 style="color: white !important;">Sototech</h1></span>
+                        <i>
+                            <h1 style="color: white !important;">ST</h1>
+                        </i>
+                    </a>
+                </div>
+
+                <nav class="navbar-custom">
+                    <ul class="navbar-right list-inline float-right mb-0">
+                        <!-- language-->
+                        <li class="dropdown notification-list list-inline-item">
+                            <div class="dropdown notification-list nav-pro-img">
+                                <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    {{ auth().name }}
+                                    <img src="{{ auth().photo }}" alt="user" class="rounded-circle">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                    <!-- item-->
+                                    <a class="dropdown-item" href="/admin/profile"><i class="mdi mdi-account-circle m-r-5"></i> Profil</a>
+                                    <a class="dropdown-item text-danger" href="/admin/logout"><i class="mdi mdi-power text-danger"></i>Deconnexion</a>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <ul class="list-inline menu-left mb-0">
+                        <li class="float-left">
+                            <button class="button-menu-mobile open-left waves-effect">
+                                <i class="mdi mdi-menu"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Top Bar End -->
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+                <div class="slimscroll-menu" id="remove-scroll">
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu" id="side-menu">
+                            <li class="menu-title">Principale</li>
+                            <li>
+                                <a href="/admin/dashboard" class="waves-effect">
+                                    <i class="ti-home"></i><span> Dashboard </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/statistiques" class="waves-effect"><i class="ti-stats-up"></i><span> Statistiques </span></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-help"></i> <span> Solutions <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span> </a>
+                                <ul class="submenu mm-collapse">
+                                    <li><a href="/admin/solutions/categories">Catégories</a></li>
+                                    <li><a href="/admin/solutions/scategories">Sous-Catégories</a></li>
+                                    <li><a href="/admin/solutions">Solutions</a></li>
+                                    <li><a href="/admin/solutions/timeline">Timeline</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-shopping-cart-full"></i> <span> Produits <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span> </a>
+                                <ul class="submenu mm-collapse">
+                                    <li><a href="/admin/products/categories">Catégories</a></li>
+                                    <li><a href="/admin/products/scategories">Sous-Catégories</a></li>
+                                    <li><a href="/admin/products">Produits</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-hand-holding"></i> <span> Services <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span> </a>
+                                <ul class="submenu mm-collapse">
+                                    <li><a href="/admin/services/categories">Catégories</a></li>
+                                    <li><a href="/admin/services">Services</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/admin/messages" class="waves-effect">
+                                    <i class="ti-comments"></i> <span> Messages </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/newsletters" class="waves-effect">
+                                    <i class="ti-comments"></i><span> NewsLetters </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/users" class="waves-effect"><i class="ti-user"></i><span> Utilisateurs </span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="clearfix"></div>
+                </div>
+                <!-- Sidebar -left -->
+            </div>
+            <!-- Left Sidebar End -->
+            {% block body %}{% endblock %}
+
+        </div>
+        <!-- END wrapper -->
+
+        <!-- jQuery  -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/js/metisMenu.min.js"></script>
+        <script src="/assets/js/jquery.slimscroll.js"></script>
+        <script src="/assets/js/waves.min.js"></script>
+        <script src="/assets/js/app.js"></script>
+        <script src="/pages/zenjs.js"></script>
+        {% block scripts %}{% endblock %}
+    </body>
+</html>

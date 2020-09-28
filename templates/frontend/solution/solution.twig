@@ -1,0 +1,49 @@
+{% include "frontend/header.twig" %}
+<section class="page-header padding" style="background-image:url({{ '/frontend/img/slider-3.jpg' }})">
+    <div class="container">
+        <div class="page-content text-center">
+            <h2>Solutions</h2>
+            <p>{{ solutio.title }}</p>
+        </div>
+    </div>
+</section>
+
+<section class="projects-section padding">
+    <div class="container" >
+        <div class="row">
+            {% if single.count() < 1 %}
+                <div class="panof">
+                    <p>Aucune Solution disponible pour le moment pour cette catégorie</p>
+                    <hr>
+                </div>
+            {% endif %}
+           {% for solu in single %}
+               <br>
+               <h2><strong>* {{ solu.title }}</strong></h2>
+          <div class="row" style="margin-bottom: 20px">
+              <p>{{ htmlformat(solu.content) }}</p>
+          </div>
+               <hr>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<section class="projets-section padding">
+    {% if timeline.count() > 0 %}
+    <div id="timeline-content">
+        <ul class="timeline">
+            {% for time in timeline %}
+            <li class="event" data-date="{{ time.title }}">
+                <h3>{{ time.title }}</h3>
+                <img src="{{ time.cover }}" alt="">
+                <p>{{ time.content }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</section>
+
+{% include "frontend/footer.twig" %}
